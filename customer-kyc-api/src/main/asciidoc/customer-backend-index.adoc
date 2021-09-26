@@ -1,0 +1,51 @@
+= Customer KYC Backend API Documentation
+:sectnums:
+:sectnumlevels: 5
+:toc: left
+:toclevels: 3
+:page-layout: docs
+
+== Introduction
+Documentation for Customer KYC Backend Solution
+
+
+== User Account APi
+
+=== Request Sample
+
+include::{snippets}/CreateAccountResourceUTest/http-request.adoc[]
+
+=== Response Sample
+
+include::{snippets}/CreateAccountResourceUTest/http-response.adoc[]
+
+=== Request Fields description
+
+include::{snippets}/CreateAccountResourceUTest/request-body.adoc[]
+
+=== Response Fields Description
+
+include::{snippets}/CreateAccountResourceUTest/response-fields.adoc[]
+
+
+== User Account Reporting Api
+=== Request Sample
+
+include::{snippets}/AccountReportingResourceUTest/http-request.adoc[]
+
+=== Response Sample
+
+include::{snippets}/AccountReportingResourceUTest/http-response.adoc[]
+
+=== Request Fields description
+
+include::{snippets}/AccountReportingResourceUTest/path-parameters.adoc[]
+
+=== Response Fields Description
+
+include::{snippets}/AccountReportingResourceUTest/response-fields.adoc[]
+
+
+
+
+

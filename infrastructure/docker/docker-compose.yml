@@ -1,0 +1,40 @@
+version: '3.9'
+services:
+  mysql-database-dev:
+    image: mysql:8.0.18
+    container_name: mysql-database-dev
+    environment:
+      MYSQL_ROOT_PASSWORD: t3st@@
+    volumes:
+      - /data/mysql
+    ports:
+      - "127.0.0.1:3307:3306"
+  user-backend-service:
+    image: user-backend-service
+    container_name: user-backend-service
+    build:
+      context: ../../customer-kyc-api
+      dockerfile: Dockerfile
+    depends_on:
+      - mysql-database-dev
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    restart:
+      on-failure
+    deploy:
+      resources:
+        limits:
+          cpus: 0.50
+          memory: 512M
+        reservations:
+          memory: 128M
+    ports:
+      - "9009:9009"
+  api-gateway:
+    image: api-gateway
+    container_name: api-gateway
+    build:
+      context: ../../api-grateway
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"

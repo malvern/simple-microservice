@@ -1,0 +1,21 @@
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: mysql
+    show-sql: false
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+  datasource:
+    username: root
+    password: d3v3l0p3r@2021
+    url: jdbc:tc:mysql:8:///
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximum-pool-size: 400
+      idle-timeout: 30000
+      minimum-idle: 20
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver

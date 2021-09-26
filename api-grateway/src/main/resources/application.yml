@@ -1,0 +1,12 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: api-gateway
+
+zuul:
+  routes:
+    user:
+      path: /user/**
+      url: http://user-backend-service:9009
+

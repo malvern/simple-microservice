@@ -1,0 +1,56 @@
+server:
+  port: 9009
+  shutdown: graceful
+spring:
+  profiles:
+    active: docker
+  lifecycle:
+    timeout-per-shutdown-phase: 35s
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+---
+spring:
+  config:
+    activate:
+      on-profile: docker
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: mysql
+    show-sql: false
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+  datasource:
+    username: root
+    password: t3st@@
+    url: jdbc:mysql://mysql-database-dev:3306/use_db?autoReconnect=true&createDatabaseIfNotExist=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8&allowLoadLocalInfile=true&allowPublicKeyRetrieval=true
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximum-pool-size: 400
+      idle-timeout: 30000
+      minimum-idle: 20
+    driver-class-name: com.mysql.cj.jdbc.Driver
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: mysql
+    show-sql: false
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+  datasource:
+    username: { your Username }
+    password: {your Password}
+    url: jdbc:mysql://{your db url}:{your port}/use_db?autoReconnect=true&createDatabaseIfNotExist=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8&allowLoadLocalInfile=true&allowPublicKeyRetrieval=true
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximum-pool-size: 400
+      idle-timeout: 30000
+      minimum-idle: 20
+    driver-class-name: com.mysql.cj.jdbc.Driver
+---
